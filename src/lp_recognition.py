@@ -89,9 +89,9 @@ class E2E(object):
             # init mask to store the location of the character candidates
             mask = np.zeros(thresh.shape, dtype="uint8")
             mask[labels == label] = 255
-
+            
             # find contours from mask
-            _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            contours, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
             if len(contours) > 0:
                 contour = max(contours, key=cv2.contourArea)
